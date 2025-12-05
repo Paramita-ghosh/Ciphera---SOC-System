@@ -1,18 +1,12 @@
-const express = require("express");
-const app = express();
-app.use(express.json());
+const app = require("./app");
+require("dotenv").config();
 
-// Route imports
-const logRoutes = require("./routes/logRoutes");
-const incidentRoutes = require("./routes/incidentRoutes");
-const analystRoutes = require("./routes/AnalystRoutes");
-const adminRoutes = require("./routes/adminRoutes");
+const PORT = process.env.PORT || 5000;
 
-// Routes
-app.use("/api/logs", logRoutes);
-app.use("/api/incidents", incidentRoutes);
-app.use("/api/analysts", analystRoutes);
-app.use("/api/auth", adminRoutes);
+app.listen(PORT , () => {
+    console.log(`ok ok ${PORT}`)
+});
 
-app.listen(5000, () => console.log("MicroSOC running on port 5000"));
+
+
 
