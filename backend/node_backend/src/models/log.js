@@ -1,16 +1,36 @@
 const mongoose = require("mongoose");
 
-const logSchema = new mongoose.Schema({
-  ts: { type: Date, default: Date.now },
-  attack_type: String,
-  src_ip: String,
-  target: String,
-  payload: Object,
-  severity: String
-});
+const LogSchema = new mongoose.Schema(
+  {
+    attackType: {
+      type: String,
+      enum: ["XSS", "SQLI", "PORT_SCAN", "FAILED_LOGIN", "BRUTE_FORCE"],
+      required: true
+    },
 
-logSchema.index({ ts: -1 });
-logSchema.index({ src_ip: 1 });
-logSchema.index({ attack_type: 1 });
+    sourceIP: {
+      type: String,
+      required: true
+    },
 
-module.exports = mongoose.model("Log", logSchema);
+    targetSystem: {
+      type: String,
+      required: true
+    },
+
+    severity: {
+      type: String,
+      enum: ["low", "medium", "high", "critical"],
+      required: true
+    },
+
+    processed: {
+      type: Boolean,
+      default: false
+    }
+  },
+  { timestamps: true }
+);
+
+module.exports = mongoose.model("Log", LogSchema);
+
