@@ -1,10 +1,10 @@
 const router = require("express").Router();
-const { loginAdmin, loginAnalyst } = require("../controllers/authController");
+const { login, register } = require("../controllers/authController");
 
-// Admin login
-router.post("/login/admin", loginAdmin);
+// Register user (Admin or Analyst)
+router.post("/register", register);
 
-// Analyst login
-router.post("/login/analyst", loginAnalyst);
+// Login user (Admin or Analyst)
+router.post("/login", login);
 
 module.exports = router;

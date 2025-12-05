@@ -3,10 +3,10 @@ const {
   createAnalyst,
   getAnalysts,
   deleteAnalyst
-} = require("../controllers/analystController");
+} = require("../controllers/adminManagementController");
 
-const { protect } = require("../middleware/authMiddleware");
-const { authorizeRoles } = require("../middleware/roleMiddleware");
+const { protect } = require("../middlewares/authMiddleware");
+const { authorizeRoles } = require("../middlewares/roleMiddleware");
 
 // Create analyst (Admin only)
 router.post("/", protect, authorizeRoles("admin"), createAnalyst);

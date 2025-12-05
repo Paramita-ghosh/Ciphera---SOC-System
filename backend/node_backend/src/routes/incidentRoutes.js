@@ -5,10 +5,10 @@ const {
   getAllIncidents,
   myIncidents,
   updateIncident
-} = require("../controllers/incidentController");
+} = require("../controllers/incidentControllermain");
 
-const { protect } = require("../middleware/authMiddleware");
-const { authorizeRoles } = require("../middleware/roleMiddleware");
+const { protect } = require("../middlewares/authMiddleware");
+const { authorizeRoles } = require("../middlewares/roleMiddleware");
 
 // Create incident manually (Admin only)
 router.post("/", protect, authorizeRoles("admin"), createIncident);

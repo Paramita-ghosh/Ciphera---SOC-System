@@ -3,6 +3,9 @@ const express = require("express");
 const cors = require("cors");
 
 const app = express();
+app.get("/", (req, res) => {
+  res.send("Node backend is working");
+});
 
 // Middlewares
 app.use(cors());

@@ -1,7 +1,7 @@
 const router = require("express").Router();
-const { generateLog, getLogs } = require("../controllers/logController");
-const { protect } = require("../middleware/authMiddleware");
-const { authorizeRoles } = require("../middleware/roleMiddleware");
+const { generateLog, getLogs } = require("../controllers/LogControllermain");
+const { protect } = require("../middlewares/authMiddleware");
+const { authorizeRoles } = require("../middlewares/roleMiddleware");
 
 // Auto-generate random logs (ADMIN ONLY)
 router.post("/generate", protect, authorizeRoles("admin"), generateLog);
